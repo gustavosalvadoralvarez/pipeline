@@ -15,6 +15,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <title>pipe-line Demo</title>
     <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="../pipe-line.html">
+    <link rel="import" href="../data-stream.html">
+    <link rel="import" href="../map-stream.html">
+
   </head>
   <body>
 
@@ -22,14 +25,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <button>Say Something</button>
 
-    <pipe-line author='{"name": "Lord Meowser", "image": "http://placekitten.com/g/200/300"}' fancy>
-      <h2>Hello pipe-line</h2>
+    <pipe-line 'on-data'="console.log">
+      <data-stream id="data-source" data="[1,2,3,4]"></data-stream>
+      <map-stream return="arg1+arg1"></map-stream>
     </pipe-line>
 
     <script>
-      document.querySelector('button').addEventListener('click', function() {
-        alert(document.querySelector('pipe-line').sayHello('Hallo!'));
-      });
     </script>
 
   </body>

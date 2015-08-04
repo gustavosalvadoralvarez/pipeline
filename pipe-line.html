@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../polymer/polymer.html">
 <script src="./lib/utils.js"></script>
-<script src="./highland/dist/highland.js"></script>
+<script src="../highland/dist/highland.js"></script>
 <!--
 An element providing a solution to no problem in particular.
 
@@ -24,7 +24,7 @@ Example:
   <style></style>
 
   <template>
-    <div id="content">
+    <div id="content"> 
       <content></content>
     </div>
   </template>
@@ -39,32 +39,85 @@ Example:
     is: 'pipe-line',
 
     properties: {
-
-    },
-    ready: function(){
-      var self, outStream;
-      self = this; 
-      outStream = utils.asArray(self.childNodes).reduce(
-        function linkPipes(p, c){ 
-          c['<|'](p.stream);
-          return c
+      pipe: {
+        type: Object,
+        readOnly: true
+      },
+      out: {
+        type: Object,
+        computed: '_out(pipe)'
+      },
+      cached: {
+        type: Boolean,
+        reflectToAttribute: true,
+        value: false
+      },
+      cache: {
+        type: Array,
+        readOnly: true,
+        value: function(){
+          return []
         }
-      ).stream; 
-      outStream.each(
-        function(v){ 
-          self.fire('data', v);
+      }
+    },
+    attached: function(){
+      var self;
+      self = this; 
+      window.addEventListener('WebComponentsReady',
+        function(evnt){ 
+          var procs, srcs, pipe;
+          procs = self._procs();
+          srcs = self._srcs(); 
+          pipe = self._pipe(srcs.slice(0, 1).concat(procs));
+          self._setPipe(pipe);
         }
       ); 
-      outStream.errors(
-        function (e) { 
+    },
+    _out: function(pipe){
+      return pipe && pipe.stream || null
+    }, 
+    _content: function(){
+      var self;
+      self = this;
+      return utils.toArray(self.querySelector('#content').children)
+    },
+    _procs: function(){
+      var self = this;
+      return self._content().filter(utils.getKeyFrom('isProcStream'))
+    },
+    _srcs: function(){
+      var self = this;
+      return self._content().filter(utils.getKeyFrom('isDataStream'))
+    },
+    _pipe: function(sections){
+      var self, pipe;
+      self = this;
+      pipe = sections.reduce(
+        function link(pipe, section){
+          console.log(section);
+          section['<|'](pipe.stream);
+          return section
+        }
+      ); 
+      pipe.each(
+        function(item){ 
+          self.fire('data', item);
+          if (self.cached){ 
+            self._setCache(self._cache.concat(item));
+          }
+        }
+      ); 
+      pipe.done(
+        function(){
+          self.fire('done');
+        }
+      );
+      pipe.errors(
+        function (e){ 
           self.fire('error', e);
         }
       );
-      outStream.done(
-        function () { 
-          self.fire('done');
-        }
-      ); 
+      return pipe
     }
 
   });
