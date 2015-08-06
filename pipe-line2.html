@@ -39,32 +39,52 @@ Example:
     is: 'pipe-line',
 
     properties: {
-
+      src: {
+        type: Object,
+        notify: true,
+        reflectToAttribute: true
+      },
+      source: {
+        type: Object,
+        computed: '_source(src)'
+      }
     },
     ready: function(){
+     
+    }, 
+    _source: function(src){
+      var self;
+      self = this; 
+      if (src) {
+        return _(src);
+      } else if (utils.car(pipeEls).isDataStream){
+        return utils.car(pipeEls).stream;
+      } else { 
+        return _()
+      }
+    },
+    assemble: function (){
       var self, pipeline, pipeEls, inStream, procStreams, outStream;
       self = this; 
       pipeEls = utils.asArray(self.childNodes); 
-      if (utils.car(pipeEls).isDataStream){
-        inStream = utils.car(pipeEls).stream;
-      }
       procStreams = pipeEls.filter(function(el){ return el.isProcStream });
       pipeline = _.pipeline.apply(_, procStreams.map(function(el){ return el.process })); 
-      endStream.each(
+      pipeline.each(
         function(v){ 
           self.fire('data', v);
         }
       ); 
-      endStream.errors(
+      pipeline.errors(
         function (e) { 
           self.fire('error', e);
         }
       );
-      endStream.done(
+      pipeline.done(
         function () { 
           self.fire('done');
         }
       ); 
+
     }
 
   });

@@ -1,0 +1,134 @@
+<!--
+@license
+Copyright (c) 2015 Gustavo Salvador Alvarez Ortiz
+-->
+<link rel="import" href="../polymer/polymer.html">
+<script src="../highland/dist/highland.js"> </script>
+
+<dom-module id="data-stream">
+
+  <style>
+    :host {
+      display: block;
+      box-sizing: border-box;
+    }
+
+    .author img {
+      float: left;
+      margin-right: 5px;
+      max-height: 100px;
+      max-width: 100px;
+    }
+  </style>
+
+  <template>
+    
+  </template>
+
+</dom-module>
+
+<script>
+(function (ops) {
+  var _, elConf; 
+  _ = highland; 
+  if (!_){ 
+    throw new Error("Missing dependency: \n\thighland.js");
+    return
+  }
+  elConf = {}; 
+  elConf.is = ops.is;
+  elConf.properties = {};
+  elConf.properties._stream = { 
+    type: Object,
+    notify: true
+  };
+  if (ops.method){ 
+    if (ops.method.argument) { 
+      var argType;
+      argType = ops.method.argument.type;
+      if (argType === 'function'){ 
+        elConf.properties.return = {
+          type: String,
+          reflectToAttribute: true,
+          notify: true
+        }
+        elConf.properties.func = {
+          type: String,
+          reflectToAttribute: true,
+          notify: true
+        }
+      } else if (argType === 'data') { 
+        elComf.properties.data = {
+          type: Object,
+          reflectToAttribute: true,
+          notify: true
+        }
+      }
+    }
+  }
+
+  
+
+
+
+  Polymer(elConf);
+
+
+  Polymer({
+
+    is: 'data-stream',
+
+    properties: {
+
+      _stream: {
+        tyoe: Object,
+        notify: true,
+      },
+      data: {
+        type: Object,
+        notify: true,
+        reflectToAttribute: true,
+        observer: 'initStream',
+        value: function () { return [] }
+      },
+      return: {
+        type: String,
+        reflectToAttribute: true
+        value: 
+      }
+    },
+
+    // Element Lifecycle
+
+    ready: function() {
+      var self = this; 
+      self.initStream();
+    },
+
+    attached: function() {
+      // `attached` fires once the element and its parents have been inserted
+      // into a document.
+      //
+      // This is a good place to perform any work related to your element's
+      // visual state or active behavior (measuring sizes, beginning animations,
+      // loading resources, etc).
+    },
+
+    detached: function() {
+      // The analog to `attached`, `detached` fires when the element has been
+      // removed from a document.
+      //
+      // Use this to clean up anything you did in `attached`.
+    },
+
+    // Element Behavior
+
+    initStream: function(){
+      var self = this;
+      self._stream = _(self.data);
+      self.fire('stream');
+    }
+  });
+})()
+
+</script>

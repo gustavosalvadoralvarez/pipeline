@@ -61,13 +61,22 @@ Example:
       }
     },
     attached: function(){
+      console.log('Pipeline attached...');
       var self;
       self = this; 
+      console.log(self._content());
+      console.log(self._srcs());
       window.addEventListener('WebComponentsReady',
         function(evnt){ 
+          console.log('WebComponents ready...');
           var procs, srcs, pipe;
           procs = self._procs();
           srcs = self._srcs(); 
+          console.log('Assembleing pipeline:');
+          console.log('Data Source: ');
+          console.log(srcs[0]);
+          console.log('Processes:');
+          console.log(procs);
           pipe = self._pipe(srcs.slice(0, 1).concat(procs));
           self._setPipe(pipe);
         }
@@ -79,7 +88,7 @@ Example:
     _content: function(){
       var self;
       self = this;
-      return utils.toArray(self.querySelector('#content').children)
+      return utils.asArray(self.querySelector('#content').children)
     },
     _procs: function(){
       var self = this;
@@ -94,26 +103,32 @@ Example:
       self = this;
       pipe = sections.reduce(
         function link(pipe, section){
+          console.log(pipe); 
           console.log(section);
           section['<|'](pipe.stream);
           return section
         }
       ); 
-      pipe.each(
+      pipe.stream.each(
         function(item){ 
           self.fire('data', item);
+          console.log('data:');
+          console.log(item);
           if (self.cached){ 
             self._setCache(self._cache.concat(item));
           }
         }
       ); 
-      pipe.done(
+      pipe.stream.done(
         function(){
           self.fire('done');
+          console.log('Pipeline done.')
         }
       );
-      pipe.errors(
+      pipe.stream.errors(
         function (e){ 
+          console.log('Pipeline error: '); 
+          console.log(e);
           self.fire('error', e);
         }
       );
