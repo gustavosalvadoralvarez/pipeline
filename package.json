@@ -1,0 +1,32 @@
+{
+  "name": "pipeline",
+  "version": "0.0.1",
+  "description": "Declarative stream processing using web components",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gustavosalvadoralvarez/pipeline.git"
+  },
+  "keywords": [
+    "data",
+    "streams",
+    "highland",
+    "webcomponents",
+    "polymer"
+  ],
+  "author": "GSA",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gustavosalvadoralvarez/pipeline/issues"
+  },
+  "homepage": "https://github.com/gustavosalvadoralvarez/pipeline#readme",
+  "dependencies": {
+    "highland": "^2.5.1"
+  }
+}

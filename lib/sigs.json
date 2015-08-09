@@ -1,0 +1,1035 @@
+[
+	{
+		"id": "_(source)",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "_(source)",
+		"param": {
+			"type": "Array | Function | Readable Stream | Promise | Iterator | Iterable",
+			"name": "source",
+			"desc": "(optional) source to take values from from"
+		},
+		"api": "public"
+	},
+	{
+		"id": "nil",
+		"section": "Utils",
+		"name": "_.nil",
+		"api": "public"
+	},
+	{
+		"id": "curry",
+		"name": "_.curry(fn, [*arguments])",
+		"section": "Functions",
+		"param": [
+			{
+				"type": "Function",
+				"name": "fn",
+				"desc": "the function to curry"
+			},
+			{
+				"type": null,
+				"name": "args",
+				"desc": "any number of arguments to pre apply to the function"
+			}
+		],
+		"returns": "Function",
+		"api": "public"
+	},
+	{
+		"id": "ncurry",
+		"name": "_.ncurry(n, fn, [args...])",
+		"section": "Functions",
+		"param": [
+			{
+				"type": "Number",
+				"name": "n",
+				"desc": "the number of arguments to wait for before apply fn"
+			},
+			{
+				"type": "Function",
+				"name": "fn",
+				"desc": "the function to curry"
+			},
+			{
+				"type": null,
+				"name": "args",
+				"desc": "any number of arguments to pre apply to the function"
+			}
+		],
+		"returns": "Function",
+		"api": "public"
+	},
+	{
+		"id": "partial",
+		"name": "_.partial(fn, args...)",
+		"section": "Functions",
+		"param": [
+			{
+				"type": "Function",
+				"name": "fn",
+				"desc": "function to partial apply"
+			},
+			{
+				"type": null,
+				"name": "args",
+				"desc": "the arguments to apply to the function"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "flip",
+		"name": "_.flip(fn, [x, y])",
+		"section": "Functions",
+		"param": [
+			{
+				"type": "Function",
+				"name": "fn",
+				"desc": "function to flip argument application for"
+			},
+			{
+				"type": null,
+				"name": "x",
+				"desc": "parameter to apply to the right hand side of f"
+			},
+			{
+				"type": null,
+				"name": "y",
+				"desc": "parameter to apply to the left hand side of f"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "compose",
+		"name": "_.compose(fn1, fn2, ...)",
+		"section": "Functions",
+		"api": "public"
+	},
+	{
+		"id": "seq",
+		"name": "_.seq(fn1, fn2, ...)",
+		"section": "Functions",
+		"api": "public"
+	},
+	{
+		"id": "isStream",
+		"section": "Utils",
+		"name": "_.isStream(x)",
+		"param": {
+			"type": null,
+			"name": "x",
+			"desc": "the object to test"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pause",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "Stream.pause()",
+		"api": "public"
+	},
+	{
+		"id": "resume",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "Stream.resume()",
+		"api": "public"
+	},
+	{
+		"id": "end",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "Stream.end()",
+		"api": "public"
+	},
+	{
+		"id": "pipe",
+		"section": "Consumption",
+		"name": "Stream.pipe(dest)",
+		"param": {
+			"type": "Writable Stream",
+			"name": "dest",
+			"desc": "the destination to write all data to"
+		},
+		"api": "public"
+	},
+	{
+		"id": "destroy",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "Stream.destroy()",
+		"api": "public"
+	},
+	{
+		"id": "consume",
+		"section": "Transforms",
+		"name": "Stream.consume(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the function to handle errors and values"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pull",
+		"section": "Consumption",
+		"name": "Stream.pull(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the function to handle data"
+		},
+		"api": "public"
+	},
+	{
+		"id": "write",
+		"section": [
+			"Stream",
+			"Objects"
+		],
+		"name": "Stream.write(x)",
+		"param": {
+			"type": null,
+			"name": "x",
+			"desc": "the value to write to the Stream"
+		},
+		"api": "public"
+	},
+	{
+		"id": "fork",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.fork()",
+		"api": "public"
+	},
+	{
+		"id": "observe",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.observe()",
+		"api": "public"
+	},
+	{
+		"id": "errors",
+		"section": "Transforms",
+		"name": "Stream.errors(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the function to pass all errors to"
+		},
+		"api": "public"
+	},
+	{
+		"id": "stopOnError",
+		"section": "Transforms",
+		"name": "Stream.stopOnError(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the function to handle an error"
+		},
+		"api": "public"
+	},
+	{
+		"id": "each",
+		"section": "Consumption",
+		"name": "Stream.each(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the iterator function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "apply",
+		"section": "Consumption",
+		"name": "Stream.apply(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the function to apply arguments to"
+		},
+		"api": "public"
+	},
+	{
+		"id": "toArray",
+		"section": "Consumption",
+		"name": "Stream.toArray(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the callback to provide the completed Array to"
+		},
+		"api": "public"
+	},
+	{
+		"id": "done",
+		"section": "Consumption",
+		"name": "Stream.done(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the callback"
+		},
+		"api": "public"
+	},
+	{
+		"id": "map",
+		"section": "Transforms",
+		"name": "Stream.map(f)",
+		"param": {
+			"type": null,
+			"name": "f",
+			"desc": "the transformation function or value to map to"
+		},
+		"api": "public"
+	},
+	{
+		"id": "doto",
+		"section": "Transforms",
+		"name": "Stream.doto(f)",
+		"param": {
+			"type": null,
+			"name": "f",
+			"desc": "the function to apply"
+		},
+		"api": "public"
+	},
+	{
+		"id": "tap",
+		"section": "Transforms",
+		"name": "Stream.tap(f)",
+		"param": {
+			"type": null,
+			"name": "f",
+			"desc": "the function to apply"
+		},
+		"api": "public"
+	},
+	{
+		"id": "ratelimit",
+		"section": "Transforms",
+		"name": "Stream.ratelimit(num, ms)",
+		"param": [
+			{
+				"type": "Number",
+				"name": "num",
+				"desc": "the number of operations to perform per window"
+			},
+			{
+				"type": "Number",
+				"name": "ms",
+				"desc": "the window of time to limit the operations in (in ms)"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "flatMap",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.flatMap(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the iterator function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pluck",
+		"section": "Transforms",
+		"name": "Stream.pluck(property)",
+		"param": {
+			"type": "String",
+			"name": "prop",
+			"desc": "the property to which values should be associated"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pickBy",
+		"section": "Transforms",
+		"name": "Stream.pickBy(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the predicate function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pick",
+		"section": "Transforms",
+		"name": "Stream.pick(properties)",
+		"param": {
+			"type": "Array",
+			"name": "properties",
+			"desc": "property names to white filter"
+		},
+		"api": "public"
+	},
+	{
+		"id": "filter",
+		"section": "Transforms",
+		"name": "Stream.filter(f)",
+		"param": {
+			"type": null,
+			"name": "f",
+			"desc": "the truth test function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "flatFilter",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.flatFilter(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the truth test function which returns a Stream"
+		},
+		"api": "public"
+	},
+	{
+		"id": "reject",
+		"section": "Transforms",
+		"name": "Stream.reject(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the truth test function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "find",
+		"section": "Transforms",
+		"name": "Stream.find(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the truth test function which returns a Stream"
+		},
+		"api": "public"
+	},
+	{
+		"id": "findWhere",
+		"section": "Transforms",
+		"name": "Stream.findWhere(props)",
+		"param": {
+			"type": "Object",
+			"name": "props",
+			"desc": "the properties to match against"
+		},
+		"api": "public"
+	},
+	{
+		"id": "group",
+		"section": "Transforms",
+		"name": "Stream.group(f)",
+		"param": {
+			"type": "Function|String",
+			"name": "f",
+			"desc": "the function or property name on which to group,"
+		},
+		"api": "public"
+	},
+	{
+		"id": "compact",
+		"section": "Transforms",
+		"name": "Stream.compact()",
+		"api": "public"
+	},
+	{
+		"id": "where",
+		"section": "Transforms",
+		"name": "Stream.where(props)",
+		"param": {
+			"type": "Object",
+			"name": "props",
+			"desc": "the properties to match against"
+		},
+		"api": "public"
+	},
+	{
+		"id": "uniqBy",
+		"section": "Transforms",
+		"name": "Stream.uniqBy(compare)",
+		"param": {
+			"type": "Function",
+			"name": "compare",
+			"desc": "custom equality predicate"
+		},
+		"api": "public"
+	},
+	{
+		"id": "uniq",
+		"section": "Transforms",
+		"name": "Stream.uniq()",
+		"api": "public"
+	},
+	{
+		"id": "zipAll0",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.zipAll0()",
+		"api": "public"
+	},
+	{
+		"id": "zipAll",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.zipAll(ys)",
+		"param": {
+			"type": "Array | Stream",
+			"name": "ys",
+			"desc": "the array of streams to combine values with"
+		},
+		"api": "public"
+	},
+	{
+		"id": "zip",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.zip(ys)",
+		"param": {
+			"type": "Array | Stream",
+			"name": "ys",
+			"desc": "the other stream to combine values with"
+		},
+		"api": "public"
+	},
+	{
+		"id": "batch",
+		"section": "Transforms",
+		"name": "Stream.batch(n)",
+		"param": {
+			"type": "Number",
+			"name": "n",
+			"desc": "length of the array to batch"
+		},
+		"api": "public"
+	},
+	{
+		"id": "batchWithTimeOrCount",
+		"section": "Transforms",
+		"name": "Stream.batchWithTimeOrCount(ms, n)",
+		"param": [
+			{
+				"type": "Number",
+				"name": "ms",
+				"desc": "the maximum milliseconds to buffer a batch"
+			},
+			{
+				"type": "Number",
+				"name": "n",
+				"desc": "the maximum length of the array to batch"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "intersperse",
+		"section": "Transforms",
+		"name": "Stream.intersperse(sep)",
+		"param": {
+			"type": null,
+			"name": "sep",
+			"desc": "the value to intersperse between the source elements"
+		},
+		"api": "public"
+	},
+	{
+		"id": "splitBy",
+		"section": "Transforms",
+		"name": "Stream.splitBy(sep)",
+		"param": {
+			"type": null,
+			"name": "sep",
+			"desc": "the separator to split on"
+		},
+		"api": "public"
+	},
+	{
+		"id": "split",
+		"section": "Transforms",
+		"name": "Stream.split()",
+		"api": "public"
+	},
+	{
+		"id": "slice",
+		"section": "Transforms",
+		"name": "Stream.slice(start, end)",
+		"param": [
+			{
+				"type": "Number",
+				"name": "start",
+				"desc": "integer representing index to start reading from source"
+			},
+			{
+				"type": "Number",
+				"name": "stop",
+				"desc": "integer representing index to stop reading from source"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "take",
+		"section": "Transforms",
+		"name": "Stream.take(n)",
+		"param": {
+			"type": "Number",
+			"name": "n",
+			"desc": "integer representing number of values to read from source"
+		},
+		"api": "public"
+	},
+	{
+		"id": "drop",
+		"section": "Transforms",
+		"name": "Stream.drop(n)",
+		"param": {
+			"type": "Number",
+			"name": "n",
+			"desc": "integer representing number of values to read from source"
+		},
+		"api": "public"
+	},
+	{
+		"id": "head",
+		"section": "Transforms",
+		"name": "Stream.head()",
+		"api": "public"
+	},
+	{
+		"id": "last",
+		"section": "Transforms",
+		"name": "Stream.last()",
+		"api": "public"
+	},
+	{
+		"id": "sortBy",
+		"section": "Transforms",
+		"name": "Stream.sortBy(f)",
+		"param": {
+			"type": null,
+			"name": "f",
+			"desc": "the sorting function"
+		},
+		"api": "public"
+	},
+	{
+		"id": "sort",
+		"section": "Transforms",
+		"name": "Stream.sort()",
+		"api": "public"
+	},
+	{
+		"id": "through",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.through(target)",
+		"api": "public"
+	},
+	{
+		"id": "pipeline",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "_.pipeline(...)",
+		"api": "public"
+	},
+	{
+		"id": "sequence",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.sequence()",
+		"api": "public"
+	},
+	{
+		"id": "series",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.series()",
+		"api": "public"
+	},
+	{
+		"id": "flatten",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.flatten()",
+		"api": "public"
+	},
+	{
+		"id": "parallel",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.parallel(n)",
+		"param": {
+			"type": "Number",
+			"name": "n",
+			"desc": "the maximum number of concurrent reads/buffers"
+		},
+		"api": "public"
+	},
+	{
+		"id": "otherwise",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.otherwise(ys)",
+		"param": {
+			"type": "Stream | Function",
+			"name": "ys",
+			"desc": "alternate stream (or stream returning function) to use if this stream is empty"
+		},
+		"api": "public"
+	},
+	{
+		"id": "append",
+		"section": "Transforms",
+		"name": "Stream.append(y)",
+		"param": {
+			"type": null,
+			"name": "y",
+			"desc": "the value to append to the Stream"
+		},
+		"api": "public"
+	},
+	{
+		"id": "reduce",
+		"section": "Transforms",
+		"name": "Stream.reduce(memo, iterator)",
+		"param": [
+			{
+				"type": null,
+				"name": "memo",
+				"desc": "the initial state of the reduction"
+			},
+			{
+				"type": "Function",
+				"name": "iterator",
+				"desc": "the function which reduces the values"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "reduce1",
+		"section": "Transforms",
+		"name": "Stream.reduce1(iterator)",
+		"param": {
+			"type": "Function",
+			"name": "iterator",
+			"desc": "the function which reduces the values"
+		},
+		"api": "public"
+	},
+	{
+		"id": "collect",
+		"section": "Transforms",
+		"name": "Stream.collect()",
+		"api": "public"
+	},
+	{
+		"id": "scan",
+		"section": "Transforms",
+		"name": "Stream.scan(memo, iterator)",
+		"param": [
+			{
+				"type": null,
+				"name": "memo",
+				"desc": "the initial state of the reduction"
+			},
+			{
+				"type": "Function",
+				"name": "iterator",
+				"desc": "the function which reduces the values"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "scan1",
+		"section": "Transforms",
+		"name": "Stream.scan1(iterator)",
+		"param": {
+			"type": "Function",
+			"name": "iterator",
+			"desc": "the function which reduces the values"
+		},
+		"api": "public"
+	},
+	{
+		"id": "transduce",
+		"section": "Transforms",
+		"name": "Stream.transduce(xf)",
+		"param": {
+			"type": "Function",
+			"name": "xf",
+			"desc": "The transducer."
+		},
+		"api": "public"
+	},
+	{
+		"id": "concat",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.concat(ys)",
+		"param": {
+			"type": "Stream | Array",
+			"name": "ys",
+			"desc": "the values to concatenate onto this Stream"
+		},
+		"api": "public"
+	},
+	{
+		"id": "merge",
+		"section": [
+			"Higher-order",
+			"Streams"
+		],
+		"name": "Stream.merge()",
+		"api": "public"
+	},
+	{
+		"id": "invoke",
+		"section": "Transforms",
+		"name": "Stream.invoke(method, args)",
+		"param": [
+			{
+				"type": "String",
+				"name": "method",
+				"desc": "the method name to call"
+			},
+			{
+				"type": "Array",
+				"name": "args",
+				"desc": "the arguments to call the method with"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "nfcall",
+		"section": "Transforms",
+		"name": "Stream.nfcall(args)",
+		"param": {
+			"type": "Array",
+			"name": "args",
+			"desc": "the arguments to call each function with"
+		},
+		"api": "public"
+	},
+	{
+		"id": "throttle",
+		"section": "Transforms",
+		"name": "Stream.throttle(ms)",
+		"param": {
+			"type": "Number",
+			"name": "ms",
+			"desc": "the minimum milliseconds between each value"
+		},
+		"api": "public"
+	},
+	{
+		"id": "debounce",
+		"section": "Transforms",
+		"name": "Stream.debounce(ms)",
+		"param": {
+			"type": "Number",
+			"name": "ms",
+			"desc": "the milliseconds to wait before sending data"
+		},
+		"api": "public"
+	},
+	{
+		"id": "latest",
+		"section": "Transforms",
+		"name": "Stream.latest()",
+		"api": "public"
+	},
+	{
+		"id": "values",
+		"section": "Objects",
+		"name": "_.values(obj)",
+		"param": {
+			"type": "Object",
+			"name": "obj",
+			"desc": "the object to return values from"
+		},
+		"api": "public"
+	},
+	{
+		"id": "keys",
+		"section": "Objects",
+		"name": "_.keys(obj)",
+		"param": {
+			"type": "Object",
+			"name": "obj",
+			"desc": "the object to return keys from"
+		},
+		"api": "public"
+	},
+	{
+		"id": "pairs",
+		"section": "Objects",
+		"name": "_.pairs(obj)",
+		"param": {
+			"type": "Object",
+			"name": "obj",
+			"desc": "the object to return key/value pairs from"
+		},
+		"api": "public"
+	},
+	{
+		"id": "extend",
+		"section": "Objects",
+		"name": "_.extend(a, b)",
+		"param": [
+			{
+				"type": "Object",
+				"name": "a",
+				"desc": "the properties to extend b with"
+			},
+			{
+				"type": "Object",
+				"name": "b",
+				"desc": "the original object to extend"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "get",
+		"section": "Objects",
+		"name": "_.get(prop, obj)",
+		"param": [
+			{
+				"type": "String",
+				"name": "prop",
+				"desc": "the property to return"
+			},
+			{
+				"type": "Object",
+				"name": "obj",
+				"desc": "the object to read properties from"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "set",
+		"section": "Objects",
+		"name": "_.set(prop, value, obj)",
+		"param": [
+			{
+				"type": "String",
+				"name": "prop",
+				"desc": "the property to return"
+			},
+			{
+				"type": null,
+				"name": "value",
+				"desc": "the value to set the property to"
+			},
+			{
+				"type": "Object",
+				"name": "obj",
+				"desc": "the object to set properties on"
+			}
+		],
+		"api": "public"
+	},
+	{
+		"id": "log",
+		"section": "Utils",
+		"name": "_.log(args..)",
+		"api": "public"
+	},
+	{
+		"id": "wrapCallback",
+		"section": "Utils",
+		"name": "_.wrapCallback(f)",
+		"param": {
+			"type": "Function",
+			"name": "f",
+			"desc": "the node style function to wrap"
+		},
+		"api": "public"
+	},
+	{
+		"id": "streamifyAll",
+		"section": "Utils",
+		"name": "_.streamifyAll(source)",
+		"param": {
+			"type": "Object | Function",
+			"name": "source",
+			"desc": "the function or object with"
+		},
+		"api": "public"
+	},
+	{
+		"id": "add",
+		"section": "Operators",
+		"name": "_.add(a, b)",
+		"api": "public"
+	},
+	{
+		"id": "not",
+		"section": "Operators",
+		"name": "_.not(x)",
+		"param": {
+			"type": null,
+			"name": "x",
+			"desc": "the value to negate"
+		}
+	}
+]
