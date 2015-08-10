@@ -20,18 +20,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   </head>
   <body>
-
-    <p>An example of <code>&lt;pipe-line&gt;</code>:</p>
-
-    <button>Say Something</button>
-
     <pipe-line 'on-data'="console.log">
-      <data-stream id="data-source" data="[1,2,3,4]"></data-stream>
-      <map-stream return-value="arg0+arg0"></map-stream>
+      <data-stream 
+        data="[1,2,3,4]">
+      </data-stream>
+      <map-stream 
+        return-value="arg0+arg0">
+      </map-stream>
     </pipe-line>
-
-    <script>
-    </script>
-
   </body>
 </html>
