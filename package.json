@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/gustavosalvadoralvarez/pipeline#readme",
   "dependencies": {
-    "highland": "^2.5.1"
+    "highland": "^2.5.1",
+    "tosource": "^0.1.3"
   }
 }

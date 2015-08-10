@@ -1,0 +1,95 @@
+<link rel="import" href="../polymer/polymer.html">
+<script src="./lib/utils.js"></script>
+<script src="../highland/dist/highland.js"></script>
+<!--
+	A pipe-line element wrapping highland method:
+	
+	"id": "reduce",
+	"section": "Transforms",
+	"name": "Stream.reduce(memo, iterator)",
+	"param": [
+		
+			"type": null,
+			"name": "memo",
+			"desc": "the initial state of the reduction"
+		,
+		
+			"type": "Function",
+			"name": "iterator",
+			"desc": "the function which reduces the values"
+		
+	],
+	"api": "public"
+
+-->
+<dom-module id="reduce-pipe">
+	<style></style>
+	<template>
+		<div id="content">
+			<content></content>
+		</div>
+	</template>
+</dom-module>
+<script>
+	Polymer(
+{ is:"reduce-pipe",
+  properties:{ _src:{ type: String,
+      notify:true,
+      readOnly:true,
+      value:"{\n\t\"id\": \"reduce\",\n\t\"section\": \"Transforms\",\n\t\"name\": \"Stream.reduce(memo, iterator)\",\n\t\"param\": [\n\t\t{\n\t\t\t\"type\": null,\n\t\t\t\"name\": \"memo\",\n\t\t\t\"desc\": \"the initial state of the reduction\"\n\t\t},\n\t\t{\n\t\t\t\"type\": \"Function\",\n\t\t\t\"name\": \"iterator\",\n\t\t\t\"desc\": \"the function which reduces the values\"\n\t\t}\n\t],\n\t\"api\": \"public\"\n}" },
+    stream:{ type: Object,
+      notify:true,
+      readOnly:true },
+    streamType:{ type: String,
+      readOnly:true,
+      value:"Transforms" },
+    method:{ type: String,
+      readOnly:true,
+      value:"reduce" },
+    memo:{ type: Object,
+      notify:true,
+      reflectToAttribute:true },
+    "iterator-return":{ type: String,
+      reflectToAttribute:true,
+      notify:true,
+      value:"" },
+    "iterator-function":{ type: String,
+      reflectToAttribute:true,
+      notify:true,
+      value:"" },
+    iterator:{ type: Function,
+      computed:"_fnArg(iterator-function,iterator-return)" },
+    _param:{ type: Array,
+      readOnly:true,
+      value:function () {
+				return JSON.parse(this._src).param.map(utils.getKeyFrom('id'))
+			} } },
+  _fnArg:function (func, returnValue){ 
+			return function(arg0, arg1, arg2, arg3, arg4){
+				var args = utils.asArray(arguments);
+				if (func !== ''){
+					return eval(func).apply(null, args)
+				} else if (returnValue !== ''){ 
+					console.log(returnValue);
+					return eval(returnValue)
+				}
+			}
+		},
+  "<|":function pipeIn(stream){ 
+			var self, m;
+			self = this; 
+			console.log("Linking "+self.method+"-stream...");
+			self._setStream(
+				stream[self.method].apply(
+					stream,
+					self._param.map(
+						function(arg){
+							return self[arg];
+						}
+					)
+				)
+			);
+			return self.stream
+		} }
+	)
+</script>
